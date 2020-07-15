@@ -1,0 +1,211 @@
+	<section class="blog-posts-area section-gap">
+		<div class="container">
+            
+			<!-- Create Supplier -->
+			<div class="single-widget search-widget">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button class="btn btn-secondary float-right  trigger_popup_fricc">create</button>
+                        <div>
+                            <h1>
+                                Add Supplier
+                            </h1>
+                            <span>Setup your supplier names here, and link them to your products. Too easy!</span>
+                            <hr style="padding-bottom: 20px;">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Popup for creating a supplier -->
+                 <div class="hover_bkgr_fricc" style="left: 0;margin-top: 32px;">
+                    <span class="helper"></span>
+                    <div >
+                        <div class="popupCloseButton">&times;</div>
+                        <div>
+                            <h1 style="text-align: justify;">
+                                Add Supplier
+                            </h1>
+                            <hr style="padding-bottom: 20px;">
+                        </div>
+
+                        <!-- Form -->
+                        <form class="form-area " [formGroup]="SupplierForm" (ngSubmit)="CreateSupplier()" class="contact-form text-right">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                        <label for="CompanyName" class="float-left">Company Name</label>
+                                        <input 
+                                        [ngClass]="{'has-error': formErrors.CompanyName }" 
+                                        (blur) ="logValidationErrors()"
+                                         formControlName="CompanyName" name="CompanyName" id="CompanyName" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                        <span class="Error-text"
+                                        *ngIf=" formErrors.CompanyName ">
+                                            {{formErrors.CompanyName}}
+                                        </span>
+                                        <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="ContactName" class="float-left">Contact Name</label>
+                                    <input 
+                                    [ngClass]="{'has-error': formErrors.ContactName }" 
+                                      (blur) ="logValidationErrors()"
+                                    formControlName="ContactName" name="ContactName" id="ContactName" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                    <span class="Error-text"
+                                        *ngIf=" formErrors.ContactName ">
+                                            {{formErrors.ContactName}}
+                                        </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                 
+                                  <div class="form-group col-md-2">
+                                    <label for="ContactTitle" class="float-left">Title</label>
+                                    <select
+                                    [ngClass]="{'has-error': formErrors.ContactTitle }" 
+                                    (blur) ="logValidationErrors()"
+                                     formControlName="ContactTitle" id="ContactTitle" name="ContactTitle" class="form-control" required>
+                                      <option>MR</option>
+                                      <option>MS</option>
+                                      <option>MRS</option>
+                                    </select>
+                                    <span class="Error-text"
+                                    *ngIf=" formErrors.ContactTitle ">
+                                        {{formErrors.ContactTitle}}
+                                    </span>
+                                  </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="Address" class="float-left">Address</label>
+                                    <input
+                                    [ngClass]="{'has-error': formErrors.Address }" 
+                                    (blur) ="logValidationErrors()"
+                                    formControlName="Address"  name="Address" id="Address" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                    <span class="Error-text"
+                                    *ngIf=" formErrors.Address ">
+                                        {{formErrors.Address}}
+                                    </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label for="Country" class="float-left">Country</label>
+                                    <input
+                                    [ngClass]="{'has-error': formErrors.Country }" 
+                                    (blur) ="logValidationErrors()"
+                                    formControlName="Country"  name="Country" id="Country" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                    <span class="Error-text"
+                                    *ngIf=" formErrors.Country ">
+                                        {{formErrors.Country}}
+                                    </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                <div class="form-group col-md-4">
+                                  <label for="Fax" class="float-left">Fax</label>
+                                  <input
+                                  [ngClass]="{'has-error': formErrors.Fax }" 
+                                    (blur) ="logValidationErrors()" 
+                                  formControlName="Fax" name="Fax" id="Fax" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.Fax ">
+                                      {{formErrors.Fax}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <label for="Phone" class="float-left">Phone</label>
+                                  <input
+                                  [ngClass]="{'has-error': formErrors.Phone }" 
+                                  (blur) ="logValidationErrors()"  
+                                  formControlName="Phone" name="Phone" id="Phone" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.Phone ">
+                                      {{formErrors.Phone}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="City" class="float-left">City</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.City }" 
+                                  (blur) ="logValidationErrors()"  
+                                  formControlName="City" name="City" id="City" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.City ">
+                                      {{formErrors.City}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="Region" class="float-left">Region</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.Region }" 
+                                  (blur) ="logValidationErrors()"
+                                  formControlName="Region" name="Region" id="Region" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.Region ">
+                                      {{formErrors.Region}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                  <label for="PostalCode" class="float-left">Postal Code</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.PostalCode }" 
+                                  (blur) ="logValidationErrors()"
+                                  formControlName="PostalCode" name="PostalCode" id="PostalCode" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.PostalCode ">
+                                      {{formErrors.PostalCode}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                              </div>
+                              <hr>
+                            <button class="primary-btn mt-20 text-white float-right" >Add</button>
+                        </form>	
+                        <!-- End of Form -->
+
+                    </div>
+                </div>
+
+                <!-- Display Suppliers table -->
+                <table class="table table-hover table-responsive">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">SupplierId</th>
+                        <th scope="col">CompanyName</th>
+                        <th scope="col">ContactName</th>
+                        <th scope="col">ContactTitle</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">PostalCode</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Fax</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let Supplier of Suppliers;">
+                        <th scope="row"> {{ Supplier._id }}</th>
+                        <td>{{ Supplier.CompanyName }}</td>
+                        <td>{{ Supplier.ContactName }}</td>
+                        <td>{{ Supplier.ContactTitle }}</td>
+                        <td>{{ Supplier.Address }}</td>
+                        <td>{{ Supplier.City }}</td>
+                        <td>{{ Supplier.Region }}</td>
+                        <td>{{ Supplier.PostalCode }}</td>
+                        <td>{{ Supplier.Country }}</td>
+                        <td>{{ Supplier.Phone }}</td>
+                        <td>{{ Supplier.Fax }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End of Display Suppliers table -->
+			        </div>
+              <!-- End of supplier -->
+        </div>
+	</section>
+
+			

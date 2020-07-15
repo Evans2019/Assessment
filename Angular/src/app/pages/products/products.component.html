@@ -1,0 +1,212 @@
+	<section class="blog-posts-area section-gap">
+		<div class="container">
+            
+			<!-- Create Products -->
+			<div class="single-widget search-widget">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button class="btn btn-secondary float-right  trigger_popup_fricc">create</button>
+                        <div>
+                            <h1>
+                                Add Product
+                            </h1>
+                            <span>Setup your Product names here, and link them to your Catergory and Supplier. Too easy!</span>
+                            <hr style="padding-bottom: 20px;">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Popup for creating a product -->
+                 <div class="hover_bkgr_fricc" style="left: 0;margin-top: 32px;">
+                    <span class="helper"></span>
+                    <div >
+                        <div class="popupCloseButton">&times;</div>
+                        <div>
+                            <h1 style="text-align: justify;">
+                                Add Product
+                            </h1>
+                            <hr style="padding-bottom: 20px;">
+                        </div>
+
+                        <!-- Form -->
+                        <form class="form-area " [formGroup]="ProductForm" (ngSubmit)="CreateProduct()" class="contact-form text-right">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                        <label for="Productname" class="float-left">Product Name</label>
+                                        <input  [ngClass]="{'has-error': formErrors.Productname }" 
+                                        (blur) ="logValidationErrors()"
+                                        formControlName="Productname" 
+                                        name="Productname" 
+                                        id="Productname" 
+                                        placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                        <span class="Error-text"
+                                        *ngIf=" formErrors.Productname ">
+                                            {{formErrors.Productname}}
+                                        </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="Supplierid" class="float-left">Supplier ID</label>
+                                    <select
+                                    [value]=''
+                                    [ngClass]="{'has-error': formErrors.Supplierid }" 
+                                    (blur) ="logValidationErrors()"
+                                     formControlName="Supplierid" id="Supplierid" name="Supplierid" class="form-control" required>
+                                      <option disabled >Select</option>
+                                      <option *ngFor="let Supplier of Suppliers;" value="{{ Supplier._id }}">{{ Supplier.CompanyName }}</option>
+                                    </select>
+                                    <span class="Error-text"
+                                        *ngIf=" formErrors.Supplierid ">
+                                            {{formErrors.Supplierid}}
+                                        </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                 
+                                  <div class="form-group col-md-3">
+                                    <label for="CatergoryId" class="float-left">Catergory Name</label>
+                                    <select
+                                    [ngClass]="{'has-error': formErrors.CatergoryId }" 
+                                    (blur) ="logValidationErrors()"
+                                     formControlName="CatergoryId" id="CatergoryId" name="CatergoryId" class="form-control" required>
+                                      <option disabled>Select</option>
+                                      <option *ngFor="let Category of Categories;" value="{{ Category._id }}">{{ Category.CatergoryName }}</option>
+                                    </select>
+                                        <span class="Error-text"
+                                        *ngIf=" formErrors.CatergoryId ">
+                                            {{formErrors.CatergoryId}}
+                                        </span>
+                                  </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="QuantityPerUnit" class="float-left">QuantityPerUnit</label>
+                                    <input 
+                                      [ngClass]="{'has-error': formErrors.QuantityPerUnit }" 
+                                        (blur) ="logValidationErrors()"
+                                        formControlName="QuantityPerUnit" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                    <span class="Error-text"
+                                    *ngIf=" formErrors.QuantityPerUnit ">
+                                        {{formErrors.QuantityPerUnit}}
+                                    </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label for="UnitPrice" class="float-left">UnitPrice</label>
+                                    <input 
+                                    [ngClass]="{'has-error': formErrors.UnitPrice }" 
+                                    (blur) ="logValidationErrors()"
+                                    formControlName="UnitPrice" name="UnitPrice" id="UnitPrice" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                    <span class="Error-text"
+                                    *ngIf=" formErrors.UnitPrice ">
+                                        {{formErrors.UnitPrice}}
+                                    </span>
+                                    <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                  </div>
+                                <div class="form-group col-md-3">
+                                  <label for="UnitsInStock" class="float-left">UnitsInStock</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.UnitsInStock }" 
+                                    (blur) ="logValidationErrors()"
+                                     formControlName="UnitsInStock" name="UnitsInStock" id="UnitsInStock" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.UnitsInStock ">
+                                      {{formErrors.UnitsInStock}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                  <label for="UnitsOnOrder" class="float-left">UnitsOnOrder</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.UnitsOnOrder }" 
+                                    (blur) ="logValidationErrors()"
+                                  formControlName="UnitsOnOrder" name="UnitsOnOrder" id="UnitsOnOrder" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.UnitsOnOrder ">
+                                      {{formErrors.UnitsOnOrder}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="ReorderLevel" class="float-left">ReorderLevel</label>
+                                  <input
+                                  [ngClass]="{'has-error': formErrors.ReorderLevel }" 
+                                    (blur) ="logValidationErrors()"
+                                   formControlName="ReorderLevel" name="ReorderLevel" id="ReorderLevel" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.ReorderLevel ">
+                                      {{formErrors.ReorderLevel}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="Discountinued" class="float-left">Discountinued</label>
+                                  <input 
+                                  [ngClass]="{'has-error': formErrors.Discountinued }" 
+                                    (blur) ="logValidationErrors()"
+                                  formControlName="Discountinued" name="Discountinued" id="Discountinued" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="common-input mb-20 form-control" required="" type="text">
+                                  <span class="Error-text"
+                                  *ngIf=" formErrors.Discountinued ">
+                                      {{formErrors.Discountinued}}
+                                  </span>
+                                  <div class="mt-20 alert-msg" style="text-align: left;"></div>
+                                </div>
+                              </div>
+                              <hr>
+                            <button class="primary-btn mt-20 text-white float-right" >Add</button>
+                        </form>	
+                         <!--End of Form -->
+
+                    </div>
+                </div>
+                <div>
+                  <button style="font-size: 13px !important;" class="primary-btn" (click) = "toggleDisplay()">{{ ButtonFilterText }}</button>
+                  <hr>
+                  <input [hidden] = "CategoryisShow" [(ngModel)]="category" (input)="Search()" name="category" id="category" placeholder="Search here with category id" onfocus="this.placeholder = 'Search here with category id'" onblur="this.placeholder = 'Search here with category id'" class="common-input mb-20 form-control" required="" type="text">
+                  <input [hidden] = "SupplierisShow" [(ngModel)]="supplier" (input)="SearchSupplier()" name="Supplier" id="Supplier" placeholder="Search here with Supplier id" onfocus="this.placeholder = 'Search here with Supplier id'" onblur="this.placeholder = 'Search here with Supplier id'" class="common-input mb-20 form-control" required="" type="text">
+                </div>
+                <hr>
+                <div class="container">
+                <!-- Table to display products -->
+                <table class="table table-hover table-responsive">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">ProductID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">SupplierID</th>
+                        <th scope="col">CatergoryID</th>
+                        <th scope="col">QuantityPerUnit</th>
+                        <th scope="col">UnitPrice</th>
+                        <th scope="col">UnitsInStock</th>
+                        <th scope="col">UnitsOnOrder</th>
+                        <th scope="col">ReorderLevel</th>
+                        <th scope="col">Discountinued</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Product of Products;">
+                        <th scope="row">{{ Product._id }}</th>
+                        <td>{{ Product.Productname }}</td>
+                        <td>{{ Product.Supplierid }}</td>
+                        <td>{{ Product.CatergoryId }}</td>
+                        <td>{{ Product.QuantityPerUnit }}</td>
+                        <td>{{ Product.UnitPrice }}</td>
+                        <td>{{ Product.UnitsInStock }}</td>
+                        <td>{{ Product.UnitsOnOrder }}</td>
+                        <td>{{ Product.ReorderLevel }}</td>
+                        <td>{{ Product.Discountinued }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                  <!-- End of Table to display products -->
+			</div>
+              <!-- End of Products -->
+        </div>
+	</section>
+
+			
